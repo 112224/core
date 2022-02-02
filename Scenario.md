@@ -17,3 +17,12 @@
 
 ### 역할과 구현의 분리
 현재 요구사항에서 아직 미확정인 부분이 많으므로, 이를 인터페이스(역할)로 만들고 실제 구현체를 바꿔가는 방식으로 개발을 진행하는 것이 합리적
+
+
+
+**회원 도메인 협력 관계**
+![image, ](https://user-images.githubusercontent.com/34308156/152167788-9bafbacc-c833-47e8-be0e-eaed5617dec6.png)
+**회원 클래스 다이어그램**
+![image](https://user-images.githubusercontent.com/34308156/152167814-843b29d6-fde5-4685-80f8-0f69de8735bf.png)
+**회원 객체 다이어그램**
+![image](https://user-images.githubusercontent.com/34308156/152167825-47c87dab-c3df-4d30-b9e1-91e34255be29.png)
