@@ -15,14 +15,43 @@
 4. 할인 정책은 변경 가능성이 높다. 회사의 기본 할인 정책을 아직 정하지 못했고, 오픈 직전까지 고민을
    미루고 싶다. 최악의 경우 할인을 적용하지 않을 수 도 있다. (미확정) 
 
+
 ### 역할과 구현의 분리
 현재 요구사항에서 아직 미확정인 부분이 많으므로, 이를 인터페이스(역할)로 만들고 실제 구현체를 바꿔가는 방식으로 개발을 진행하는 것이 합리적
 
-
+---
+### 회원
 
 **회원 도메인 협력 관계**
-![image, ](https://user-images.githubusercontent.com/34308156/152167788-9bafbacc-c833-47e8-be0e-eaed5617dec6.png)
+![image, ](https://user-images.githubusercontent.com/34308156/152167788-9bafbacc-c833-47e8-be0e-eaed5617dec6.png)  
 **회원 클래스 다이어그램**
-![image](https://user-images.githubusercontent.com/34308156/152167814-843b29d6-fde5-4685-80f8-0f69de8735bf.png)
+![image](https://user-images.githubusercontent.com/34308156/152167814-843b29d6-fde5-4685-80f8-0f69de8735bf.png)  
 **회원 객체 다이어그램**
-![image](https://user-images.githubusercontent.com/34308156/152167825-47c87dab-c3df-4d30-b9e1-91e34255be29.png)
+![image](https://user-images.githubusercontent.com/34308156/152167825-47c87dab-c3df-4d30-b9e1-91e34255be29.png)  
+
+---  
+
+### 주문과 할인  
+
+**주문 도메인의 협력, 역할, 책임  
+![image](https://user-images.githubusercontent.com/34308156/152730287-32fe7cfa-256f-4733-8c34-1adb22e6b776.png)  
+![image](https://user-images.githubusercontent.com/34308156/152732095-334e2486-a6b7-4c80-ad0d-e689a9f65a55.png)  
+
+1. 주문 생성: 클라이언트는 주문 서비스에 주문 생성을 요청한다.
+2. 회원 조회: 할인을 위해서는 회원 등급이 필요하다. 그래서 주문 서비스는 회원 저장소에서 회원을 조회한다.
+3. 할인 적용: 주문 서비스는 회원 등급에 따른 할인 여부를 할인 정책에 위임한다.
+4. 주문 결과 반환: 주문 서비스는 할인 결과를 포함한 주문 결과를 반환한다.
+
+(실제 업무상황에서는 주문 데이터를 DB에 저장하겠지만, 현재 예제에서는 우선 생략하고 개발을 진행하기로 함.)
+
+**주문 도메인 클래스 다이어그램**
+![image](https://user-images.githubusercontent.com/34308156/152732348-276caff1-6751-4174-92eb-b157d0e92890.png)
+
+**주문 도메인 객체 다이어그램**
+![image](https://user-images.githubusercontent.com/34308156/152732563-fed4a2a5-3966-4f9c-9fd6-e3323c3b16b5.png)  
+![image](https://user-images.githubusercontent.com/34308156/152732587-a2cb151a-a826-487a-a4e4-9dcc5e738723.png)  
+
+Repository의 종류가 달라지거나, 할인 정책이 달라지더라도 **서비스 자체의 변경없이 협력 관계를 그대로 재사용 할 수 있게 개발**
+
+
+
